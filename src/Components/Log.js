@@ -54,9 +54,18 @@ const Log = () => {
       } catch (error) {
         const errorCode = error.code;
         const errorMessage = error.message;
-        toast.error('Invalid Email/Password');
+        if (errorCode === 'auth/invalid-email'){
+          toast.error('invalid email address')
+        }
+        else if (errorCode === 'auth/wrong-password'){
+          toast.error('wrong password')
+        }
+        else{
+          toast.error('Login failed')
+        }
         console.log("Error logging in:", error.message);
       }
+
       finally {
         setSubmitting(false); // Enable the buttons again
       }
@@ -102,7 +111,7 @@ const Log = () => {
             <h1>Sign in to your account </h1>
             </div>
         <form onSubmit={formik.handleSubmit} className='mx-auto block  w-full '>
-            <div className='bg-white mb-10 lg:mb-0 relative px-10 pt-8 pb-8 items-center justify-center rounded-lg'>
+            <div className='bg-white mb-10 lg:mb-0 relative px-7 lg:px-10 pt-8 pb-8 items-center justify-center rounded-lg'>
             <div className='mb-5'>
                 <label htmlFor="name" className='text-sm lg:text-md'>Email Address</label>
                 <div>

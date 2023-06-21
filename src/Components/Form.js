@@ -19,8 +19,6 @@ const Signup = () => {
       twitterApiKey: "****dwq20a",
       twitterApiSecret: 
       "vqpMLDaUl8IN8pyZhfEc6MyVYZJh8Fl6xH8PjV6Otzfx4"
-
-
     };
 
   // Initialize Firebase
@@ -36,7 +34,7 @@ const Signup = () => {
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
-      toast.error('Email already in use');
+      toast.error(errorCode, errorMessage );
       console.error('Signup error:', errorCode, errorMessage);
       // You can display an error message or perform any necessary actions
     } finally {
@@ -87,7 +85,7 @@ const Signup = () => {
             <h1>Sign up to your account</h1>
           </div>
           <form action='' onSubmit={formik.handleSubmit} className='mx-auto block w-full'>
-            <div className='bg-white px-10 pt-8 pb-10 items-center justify-center rounded-lg'>
+            <div className='bg-white px-7 lg:px-10 pt-8 pb-10 items-center justify-center rounded-lg'>
               <div className='mb-5'>
                 <label htmlFor='name' className='text-sm lg:text-md'>Full name*</label>
                 <div>
